@@ -1,0 +1,14 @@
+name: CustomAttributes
+version: '${project.version}'
+main: ru.example.customattributes.CustomAttributesPlugin
+api-version: '1.21.11'
+description: Кастомные атрибуты для предметов и брони
+commands:
+  customattr:
+    description: Управление кастомными атрибутами предмета в руке
+    usage: /customattr <add|remove|clear|list> [атрибут] [уровень]
+    aliases: [ca]
+    permission: customattributes.admin
+permissions:
+  customattributes.admin:
+    default: op

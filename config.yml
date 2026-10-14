@@ -1,0 +1,408 @@
+# Учитывать ли предмет в основной руке (кроме брони на игроке)
+include-main-hand: true
+
+# Значение в % за 1 уровень атрибута на 1 предмете.
+# Суммируется по всей надетой броне (и предмету в руке).
+values:
+  absorb: 3          # шанс поглотить весь урон от удара
+  water_resist: 15   # сопротивление урону в воде
+  fire_reduce: 25    # уменьшение длительности горения
+  golden_heart: 4    # шанс (золотое сердце себе + иссушение атакующему, одним броском)
+  levitation: 3      # шанс левитации атакующему + регенерация себе
+  reflect: 4         # шанс вернуть урон атакующему
+  fall_reduce: 15    # -% урона от падения за предмет
+  blast_resist: 10   # +% сопротивления взрывам за предмет
+  arrow_resist: 10   # +% сопротивления стрелам/снарядам за предмет
+  frost_guard: 5     # шанс % замедлить атакующего при получении удара
+  adrenaline: 4      # шанс % получить ускорение при получении удара
+
+# Максимум суммарного значения в %
+caps:
+  absorb: 75
+  water_resist: 80
+  fire_reduce: 100
+  golden_heart: 100
+  levitation: 100
+  reflect: 100
+  fall_reduce: 90
+  blast_resist: 80
+  arrow_resist: 70
+  frost_guard: 100
+  adrenaline: 100
+
+golden-heart:
+  hearts: 1                 # сколько сердец даёт (1 сердце = 2 HP)
+  max-absorption: 20.0      # потолок золотых HP
+  wither-seconds: 2
+  wither-amplifier: 0       # 0 = уровень I
+
+levitation:
+  levitation-seconds: 1
+  levitation-amplifier: 0   # 0 = уровень I
+  regen-seconds: 2
+  regen-amplifier: 1        # 1 = уровень II
+
+frost-guard:
+  seconds: 3
+  amplifier: 1              # 1 = Замедление II
+
+adrenaline:
+  seconds: 3
+  amplifier: 1              # 1 = Скорость II
+
+reflect:
+  multiplier: 1.5           # 150% полученного урона
+  feedback: true            # показывать надпись в action bar, когда отражение сработало
+
+# ============================================================
+#  Способности предметов в ЛЕВОЙ руке
+# ============================================================
+
+# Определять ли способности, если предмет взял сам создатель (для тестов)
+roll-for-creator: false
+
+messages:
+  # Описание предмета, пока способности ещё не определены (любое число строк)
+  pending-lore:
+    - "&5Скрытые способности"
+    - "&8Проявятся у нового владельца"
+  # Описание предмета, если ни одна способность не выпала
+  none-lore:
+    - "&8Способности не проявились"
+  # Сообщение игроку при определении (%abilities% — список названий)
+  rolled: "&6Предмет пробудил способности: &f%abilities%"
+  rolled-none: "&7Предмет не пробудил ни одной способности"
+  # Сообщение жертве блокировки элитр
+  elytra-blocked: "&cВаши элитры заблокированы на %seconds% сек!"
+  # Надпись при срабатывании «Второго дыхания»
+  second-wind: "&dВторое дыхание!"
+  # Надпись при срабатывании «Возрождения Феникса»
+  phoenix: "&6&lВозрождение Феникса!"
+
+# Числовые параметры способностей
+ability-settings:
+  tenth-hit-every: 10        # tenth_hit: каждый N-й удар x2 урона
+  warden-chance: 6           # warden_strike: шанс %
+  warden-damage: 20          # warden_strike: доп. урон
+  combat-speed-seconds: 2    # combat_speed: сколько секунд длится Скорость I после удара
+  water-damage: 2            # water_damage: +урон в воде
+  water-armor: 1             # water_armor: +броня в воде
+  water-triple-chance: 8     # water_triple: шанс % тройного урона в воде
+  golden-strike-chance: 8    # golden_strike: шанс %
+  golden-strike-hearts: 3    # golden_strike: сколько золотых сердец
+  weakening-chance: 5        # weakening_strike: шанс %
+  weakening-seconds: 6
+  lift-every: 10             # lift_strike: каждый N-й удар
+  lift-seconds: 2
+  elytra-jam-chance: 8       # elytra_jam: шанс %
+  elytra-jam-seconds: 4
+  armor-break-chance: 20     # armor_breaker: шанс %
+  armor-break-multiplier: 2.0  # во сколько раз сильнее ломается броня
+  nausea-every: 15           # nausea_strike: каждый N-й удар
+  nausea-seconds: 5
+  executioner-hearts: 7      # executioner: ниже скольких сердец у противника
+  executioner-damage: 2
+  last-stand-hearts: 7       # last_stand: ниже скольких сердец у вас
+  last-stand-armor: 2
+  calm-resist-chance: 5      # calm_resist: шанс % при ударе (если не горите)
+  calm-resist-seconds: 3
+  calm-resist-amplifier: 1   # 1 = Сопротивление II
+  vampire-chance: 10         # vampire_bite: шанс %
+  vampire-heal: 2            # сколько HP лечит (2 = 1 сердце)
+  frost-strike-chance: 8     # frost_strike: шанс %
+  frost-strike-seconds: 3
+  frost-strike-amplifier: 1  # 1 = Замедление II
+  ignite-chance: 8           # ignite_strike: шанс %
+  ignite-seconds: 4
+  sky-wrath-chance: 8        # sky_wrath: шанс %
+  sky-wrath-damage: 18
+  soft-landing-reduction: 50 # soft_landing: -% урона от падения
+  second-wind-hearts: 5      # second_wind: срабатывает, если здоровья меньше N сердец
+  second-wind-cooldown: 60   # откат в секундах
+  second-wind-seconds: 5     # длительность Регенерации
+  second-wind-amplifier: 4   # 2 = Регенерация III
+  second-wind-absorb-hearts: 8
+
+  # --- легендарные ---
+  phoenix-cooldown: 300      # phoenix_rebirth: откат в секундах
+  phoenix-heal-percent: 50   # % максимального здоровья после воскрешения
+  phoenix-regen-seconds: 5
+  phoenix-fire-seconds: 8    # огнестойкость после воскрешения
+  phoenix-radius: 4          # радиус, в котором враги загораются
+  phoenix-ignite-seconds: 4
+  thunder-every: 12          # thunder_god: каждый N-й удар
+  thunder-damage: 8
+  thunder-targets: 3         # сколько врагов рядом поражает молния
+  thunder-radius: 6
+  soul-heal: 6               # soul_harvest: лечение за убийство (HP, 6 = 3 сердца)
+  soul-absorb: 4             # золотые HP (4 = 2 сердца)
+  soul-speed-seconds: 5
+  titan-reduction: 0        # titan_skin: -% ко всему входящему урону
+  time-stop-every: 20        # time_stop: каждый N-й удар
+  time-stop-seconds: 2
+  time-stop-radius: 5
+  blood-rage-per-heart: 0.5  # blood_rage: +урон за каждое потерянное сердце
+  blood-rage-max: 6          # максимум бонуса урона
+  volcano-ignite-seconds: 3  # volcano_heart: сколько горит тот, кто бьёт вас
+  storm-chance: 4            # storm_breath: шанс %
+  storm-radius: 5
+  storm-seconds: 4
+  storm-levitation-seconds: 2  # длительность Левитации в бурю
+
+  # --- ещё легендарные ---
+  shadow-dodge-chance: 10    # shadow_dodge: шанс % увернуться от удара
+  shadow-invis-seconds: 2
+  shadow-speed-seconds: 2
+  meteor-every: 25           # meteor_strike: каждый N-й удар
+  meteor-damage: 10
+  meteor-radius: 4
+  meteor-ignite-seconds: 3
+  treasure-xp-multiplier: 2  # treasure_hunter: множитель опыта с мобов
+  treasure-double-chance: 25 # шанс % двойной добычи
+  life-gift-hearts: 4        # life_gift: сколько сердец к максимуму здоровья
+  death-mark-chance: 12      # death_mark: шанс % пометить цель
+  death-mark-seconds: 8
+  death-mark-bonus: 30       # +% урона по помеченной цели
+  earthshaker-min-damage: 3  # earthshaker: от какого урона падения срабатывает волна
+  earthshaker-multiplier: 1.5
+  earthshaker-max: 20
+  earthshaker-radius: 5
+  execution-threshold: 20    # royal_execution: добивает, если здоровья цели меньше N%
+  execution-cooldown: 20     # откат в секундах
+
+# Порядок способностей на предмете по цвету названия (сверху вниз).
+# Цвет берётся из первого цветового кода в name. Цвета, которых нет в списке, идут в конец.
+color-order:
+  - "&d"   # розовые (легендарные)
+  - "&6"   # золотые
+  - "&c"   # красные (Палач, Вампирский укус); переместите строку, если нужно выше или ниже
+  - "&9"   # синие
+  - "&8"   # серые
+
+# Название и описание каждой способности.
+# Цвета: &-коды. Описание (lore) — список строк; обычно 2 строки, но можно любое число.
+abilities:
+  tenth_hit:
+    name: "&6&l✦ Десятый удар"
+    lore:
+      - "&7- Каждый десятый удар"
+      - "&7наносит двойной урон"
+  warden_strike:
+    name: "&9&l✦ Удар Хранителя"
+    lore:
+      - "&7- Шанс 6% ударить звуковой волной"
+      - "&7и нанести 20 доп. урона"
+  combat_speed:
+    name: "&8&l✦ Боевой темп"
+    lore:
+      - "&7- Скорость I, пока вы наносите"
+      - "&7удары каждые 2 секунды"
+  water_damage:
+    name: "&9&l✦ Сила прилива"
+    lore:
+      - "&7- +2 к урону,"
+      - "&7пока вы находитесь в воде"
+  water_armor:
+    name: "&8&l✦ Водяной панцирь"
+    lore:
+      - "&7- +1 к броне,"
+      - "&7пока вы находитесь в воде"
+  water_triple:
+    name: "&6&l✦ Гнев пучины"
+    lore:
+      - "&7- Шанс 8% нанести тройной урон,"
+      - "&7пока вы находитесь в воде"
+  calm_regen:
+    name: "&9&l✦ Холодное исцеление"
+    lore:
+      - "&7- Регенерация I,"
+      - "&7пока вы не горите"
+  calm_strength:
+    name: "&8&l✦ Холодная ярость"
+    lore:
+      - "&7- Сила I,"
+      - "&7пока вы не горите"
+  calm_resist:
+    name: "&6&l✦ Холодная стойкость"
+    lore:
+      - "&7- Пока вы не горите, шанс 5% при ударе"
+      - "&7получить Сопротивление II на 3 секунды"
+  golden_strike:
+    name: "&6&l✦ Золотой удар"
+    lore:
+      - "&7- Шанс 8% при ударе получить"
+      - "&7+3 золотых сердца"
+  adversity:
+    name: "&8&l✦ Стойкость в беде"
+    lore:
+      - "&7- При любом негативном эффекте даёт"
+      - "&7Сопротивление I и Регенерацию I"
+  weakening_strike:
+    name: "&9&l✦ Ослабляющий удар"
+    lore:
+      - "&7- Шанс 5% наложить Слабость I"
+      - "&7на 6 секунд на противника"
+  elytra_regen:
+    name: "&9&l✦ Исцеляющий полёт"
+    lore:
+      - "&7- Регенерация II,"
+      - "&7пока вы летите на элитрах"
+  lift_strike:
+    name: "&8&l✦ Подбрасывающий удар"
+    lore:
+      - "&7- Каждый 10 удар накладывает"
+      - "&7Левитацию I на 2 секунды"
+  elytra_jam:
+    name: "&6&l✦ Глушитель крыльев"
+    lore:
+      - "&7- Шанс 8% заблокировать элитры"
+      - "&7противника на 4 секунды"
+  hand_power:
+    name: "&8&l✦ Душа пирата"
+    lore:
+      - "&7- Сила I и Скорость I,"
+      - "&7пока предмет в левой руке"
+  armor_breaker:
+    name: "&9&l✦ Крушитель брони"
+    lore:
+      - "&7- Шанс 20% сломать броню"
+      - "&7противника в 2 раза сильнее"
+  nausea_strike:
+    name: "&6&l✦ Дурманящий удар"
+    lore:
+      - "&7- Каждый 15 удар накладывает"
+      - "&7Тошноту I и Слабость I на 5 секунд"
+  executioner:
+    name: "&c&l✦ Палач"
+    lore:
+      - "&7- +2 к урону, когда у противника"
+      - "&7меньше 7 сердец здоровья"
+  last_stand:
+    name: "&d&l✦ Последний рубеж"
+    lore:
+      - "&7- +2 к броне, когда у вас"
+      - "&7меньше 7 сердец здоровья"
+  vampire_bite:
+    name: "&c&l✦ Вампирский укус"
+    lore:
+      - "&7- Шанс 10% при ударе"
+      - "&7восстановить себе 1 сердце"
+  frost_strike:
+    name: "&9&l✦ Ледяное касание"
+    lore:
+      - "&7- Шанс 8% при ударе наложить"
+      - "&7Замедление II на 3 секунды"
+  ignite_strike:
+    name: "&6&l✦ Поджигающий удар"
+    lore:
+      - "&7- Шанс 8% при ударе"
+      - "&7поджечь противника на 4 секунды"
+  sky_wrath:
+    name: "&d&l✦ Гнев небес"
+    lore:
+      - "&7- Шанс 8% при ударе вызвать молнию"
+      - "&7и нанести 16 доп. урона"
+  soft_landing:
+    name: "&8&l✦ Мягкое приземление"
+    lore:
+      - "&7- Урон от падения снижен на 50%,"
+      - "&7пока предмет в левой руке"
+  gills:
+    name: "&9&l✦ Жабры"
+    lore:
+      - "&7- Подводное дыхание, а в воде"
+      - "&7ещё и Грация дельфина"
+  second_wind:
+    name: "&d&l✦ Второе дыхание"
+    lore:
+      - "&7- При здоровье меньше 5 сердец:"
+      - "&7Регенерация V и +8 золотых сердца (откат 60 сек)"
+  phoenix_rebirth:
+    name: "&d&l✦✦ Возрождение Феникса"
+    lore:
+      - "&7- Спасает от смертельного удара:"
+      - "&7здоровье 50%, огонь вокруг (откат 5 мин)"
+  thunder_god:
+    name: "&d&l✦✦ Гнев Громовержца"
+    lore:
+      - "&7- Каждый 12 удар бьёт молнией:"
+      - "&7+8 урона цели и 3 врагам рядом"
+  soul_harvest:
+    name: "&d&l✦✦ Жнец душ"
+    lore:
+      - "&7- За убийство: +3 сердца здоровья,"
+      - "&7+2 золотых сердца и Скорость II"
+  titan_skin:
+    name: "&d&l✦ Акулья кожа"
+    lore:
+      - "&7- Невозможно отбросить ударом"
+  time_stop:
+    name: "&d&l✦✦ Остановка времени"
+    lore:
+      - "&7- Каждый 20 удар обездвиживает"
+      - "&7цель и врагов рядом на 2 секунды"
+  blood_rage:
+    name: "&d&l✦✦ Кровавая ярость"
+    lore:
+      - "&7- Чем меньше у вас здоровья, тем больше урон:"
+      - "&7+0.5 за каждое потерянное сердце (до +6)"
+  purity:
+    name: "&d&l✦✦ Дух очищения"
+    lore:
+      - "&7- Иммунитет ко всем негативным"
+      - "&7эффектам, пока предмет в левой руке"
+  volcano_heart:
+    name: "&d&l✦✦ Сердце вулкана"
+    lore:
+      - "&7- Невосприимчивость к огню; тот, кто бьёт вас,"
+      - "&7загорается на 3 секунды"
+  storm_breath:
+    name: "&d&l✦✦ Дыхание бури"
+    lore:
+      - "&7- Шанс 4% при ударе: враги рядом получают"
+      - "&7Замедление III, Слабость I (4 сек) и Левитацию I (2 сек)"
+  shadow_dodge:
+    name: "&d&l✦✦ Призрачный шаг"
+    lore:
+      - "&7- Шанс 10% полностью увернуться от удара,"
+      - "&7получив невидимость и Скорость II на 2 секунды"
+  meteor_strike:
+    name: "&d&l✦✦ Метеорит"
+    lore:
+      - "&7- Каждый 25 удар обрушивает метеорит:"
+      - "&7+10 урона цели и врагам рядом, поджигает"
+  wind_spirit:
+    name: "&d&l✦✦ Дух ветра"
+    lore:
+      - "&7- Скорость II и Прыгучесть II,"
+      - "&7падение не наносит вам урона"
+  treasure_hunter:
+    name: "&d&l✦✦ Охотник за сокровищами"
+    lore:
+      - "&7- Убитые мобы дают x2 опыта,"
+      - "&7шанс 25% получить двойную добычу"
+  life_gift:
+    name: "&d&l✦✦ Дар жизни"
+    lore:
+      - "&7- +4 сердца к максимальному здоровью,"
+      - "&7пока предмет в левой руке"
+  death_mark:
+    name: "&d&l✦✦ Метка смерти"
+    lore:
+      - "&7- Шанс 12% пометить цель на 8 секунд:"
+      - "&7она светится и получает на 30% больше урона от вас"
+  dragon_wings:
+    name: "&d&l✦✦ Крылья дракона"
+    lore:
+      - "&7- Сопротивление II и Сила II,"
+      - "&7пока вы летите на элитрах"
+  earthshaker:
+    name: "&d&l✦✦ Землетряс"
+    lore:
+      - "&7- Падения не наносят вам урона, а приземление"
+      - "&7бьёт ударной волной врагов вокруг"
+  royal_execution:
+    name: "&d&l✦✦ Королевская казнь"
+    lore:
+      - "&7- Добивает врага, у которого меньше 20%"
+      - "&7здоровья (откат 20 секунд)"
